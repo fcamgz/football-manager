@@ -82,7 +82,7 @@ public class Player {
     }
 
     public String getInfo(){
-        String s = "Player: " + name +
+        String s = "\nPlayer: " + name +
                 "\nNumber: " + number +
                 "\nAge: " + age +
                 "\nPosition: " + position;

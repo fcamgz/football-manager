@@ -8,30 +8,29 @@ public class Coach {
     public int yearsOfExperience;
     public ArrayList<Player> starting11List;
 
-    public Coach(String name, int yearsOfExperience,Team team) {
+    public Coach(String name, int yearsOfExperience, Team team) {
         this.name = name;
         this.yearsOfExperience = yearsOfExperience;
         this.team = team;
         starting11List = new ArrayList<>();
     }
 
-    public boolean findPlayerInStarting11List(Player player){
-        for(Player i : starting11List){
-            if(i.getNumber() == player.getNumber()){
+    public boolean findPlayerInStarting11List(Player player) {
+        for (Player i : starting11List) {
+            if (i.getNumber() == player.getNumber()) {
                 return true;
             }
         }
         return false;
     }
 
-    public String createStarting11(Player player){
+    public String createStarting11(Player player) {
         String s = "";
-        if(findPlayerInStarting11List(player) && starting11List.size() < 11){
+        if (!findPlayerInStarting11List(player) && starting11List.size() < 11) {
             starting11List.add(player);
-            s = player.getName() + " added";
+            s = player.getName() + " added to Starting 11";
             return s;
-        }
-        else if(findPlayerInStarting11List(player) && starting11List.size() >= 11){
+        } else if (!findPlayerInStarting11List(player) && starting11List.size() >= 11) {
             s = "There can't be more than 11 players in starting 11";
             return s;
         }
@@ -39,43 +38,104 @@ public class Coach {
         return s;
     }
 
-    public String trainPlayer(Player player){
+    public String trainShooting(Player player) {
         String s = "";
-        switch (player.getPosition()){
-            case FORWARD:
-                if(player.getShootingRating() <= 100){
+        if (player.getShootingRating() <= 100) {
+            switch (player.position) {
+                case FORWARD:
+                    player.setShootingRating(player.getShootingRating() + 5);
+                    s += player.getShootingRating();
+                    return s;
+                case MIDFIELDER:
+                    player.setShootingRating(player.getShootingRating() + 3);
+                    s += player.getShootingRating();
+                    return s;
+                case DEFENDER:
+                    player.setShootingRating(player.getShootingRating() + 2);
+                    s += player.getShootingRating();
+                    return s;
+                case GOALKEEPER:
                     player.setShootingRating(player.getShootingRating() + 1);
                     s += player.getShootingRating();
                     return s;
-                }
-                s = "Maximum rating is reached";
-                return s;
-            case MIDFIELDER:
-                if(player.getPassingRating() <= 100){
-                    player.setPassingRating((player.getPassingRating() + 1));
-                    s += player.getPassingRating();
+            }
+            s = "Something went wrong";
+            return s;
+        }
+        s = "Maximum rating is reached";
+        return s;
+    }
+
+    public String trainDefending(Player player) {
+        String s = "";
+        if (player.getDefendingRating() <= 100) {
+            switch (player.position) {
+                case FORWARD:
+                    player.setDefendingRating(player.getDefendingRating() + 2);
+                    s += player.getDefendingRating();
                     return s;
-                }
-                s = "Maximum rating is reached";
-                return s;
-            case DEFENDER:
-                if(player.getDefendingRating() <= 100) {
+                case MIDFIELDER:
+                    player.setDefendingRating(player.getDefendingRating() + 3);
+                    s += player.getDefendingRating();
+                    return s;
+                case DEFENDER:
+                    player.setDefendingRating(player.getDefendingRating() + 5);
+                    s += player.getDefendingRating();
+                    return s;
+                case GOALKEEPER:
                     player.setDefendingRating(player.getDefendingRating() + 1);
                     s += player.getDefendingRating();
                     return s;
-                }
-                s = "Maximum rating is reached";
-                return s;
-            case GOALKEEPER:
-                if(player.getGoalKeepingRating() <= 100){
-                    player.setGoalKeepingRating(player.getGoalKeepingRating() + 1);
+            }
+            s = "Something went wrong";
+            return s;
+        }
+        s = "Maximum rating is reached";
+        return s;
+    }
+
+    public String trainPassing(Player player) {
+        String s = "";
+        if (player.getPassingRating() <= 100) {
+            switch (player.position) {
+                case FORWARD:
+                    player.setPassingRating(player.getPassingRating() + 3);
+                    s += player.getPassingRating();
+                    return s;
+                case MIDFIELDER:
+                    player.setPassingRating(player.getPassingRating() + 5);
+                    s += player.getPassingRating();
+                    return s;
+                case DEFENDER:
+                    player.setPassingRating(player.getPassingRating() + 2);
+                    s += player.getPassingRating();
+                    return s;
+                case GOALKEEPER:
+                    player.setPassingRating(player.getPassingRating() + 1);
+                    s += player.getPassingRating();
+                    return s;
+            }
+            s = "Something went wrong";
+            return s;
+        }
+        s = "Maximum rating is reached";
+        return s;
+    }
+
+    public String trainGoalKeeping(Player player) {
+        String s = "";
+        if (player.getGoalKeepingRating() <= 100) {
+            switch (player.position) {
+                case GOALKEEPER:
+                    player.setGoalKeepingRating(player.getGoalKeepingRating() + 5);
                     s += player.getGoalKeepingRating();
                     return s;
-                }
-                s = "Maximum rating is reached";
-                return s;
+            }
+            player.setGoalKeepingRating(player.getGoalKeepingRating() + 1);
+            s += player.getGoalKeepingRating();
+            return s;
         }
-        s = "Something went wrong";
+        s = "Maximum rating is reached";
         return s;
     }
 

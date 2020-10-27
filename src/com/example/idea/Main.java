@@ -3,15 +3,27 @@ package com.example.idea;
 public class Main {
 
     public static void main(String[] args) {
+        League superlig = new League("Superlig","Turkey");
         Team besiktas = new Team("Besiktas","vodafone arena",1903,20,100000);
+        Team madrid = new Team("Real Madrid","santiago bernabeu",1901,20,1000000);
+        Coach senol = new Coach("Senol Gunes",20,besiktas);
         Player aboubakar = new Forward("Aboubakar",Positions.FORWARD,10,27);
         Player talisca = new Midfielder("Talisca",Positions.MIDFIELDER,31,26);
         Player vanDjik = new Defender("Van Djik",Positions.DEFENDER,4,27);
         Player fabri = new GoalKeeper("Fabri",Positions.GOALKEEPER,1,30);
-        System.out.println(besiktas.addPlayers(aboubakar));
-        System.out.println(besiktas.addPlayers(talisca));
-        System.out.println(besiktas.addPlayers(vanDjik));
-        System.out.println(besiktas.addPlayers(fabri));
-        System.out.println(aboubakar.getInfo());
+        Player ronaldo = new Player("ronaldo",Positions.FORWARD,7,33);
+        madrid.addPlayer(ronaldo);
+        Coach zidane = new Coach("zidane",20,madrid);
+        madrid.addCoach(zidane);
+        besiktas.addPlayer(aboubakar);
+        besiktas.addPlayer(talisca);
+        besiktas.addPlayer(vanDjik);
+        besiktas.addPlayer(fabri);
+        besiktas.addCoach(senol);
+        senol.trainShooting(aboubakar);
+        senol.trainPassing(aboubakar);
+        senol.trainShooting(aboubakar);
+        Match match = new Match(superlig,besiktas,madrid);
+        System.out.println(match.kickOff("vodafone arena",besiktas,madrid));
     }
 }
