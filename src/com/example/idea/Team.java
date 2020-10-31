@@ -8,6 +8,7 @@ public class Team {
     private int balance;
     public ArrayList<Player> playerList;
     public ArrayList<Character> winLossHistory;
+    public ArrayList<Integer> scoredGoals;
     public Coach coach;
 
     public Team(String name, String stadium, int since, int teamCapacity, int balance) {
@@ -18,7 +19,30 @@ public class Team {
         this.balance = balance;
         numberOfPlayers = 0;
         playerList = new ArrayList<>(teamCapacity);
+        scoredGoals = new ArrayList<>();
         winLossHistory = new ArrayList<>(34);
+    }
+
+    public double teamWorth(){
+        double clubWorth = 0;
+        for(Player i : playerList){
+           clubWorth += i.worth;
+        }
+        return clubWorth;
+    }
+
+    public String transferPlayer(Team otherTeam, Player player){
+        String s = "";
+        if(balance > player.worth){
+            playerList.add(player);
+            balance -= player.worth;
+            otherTeam.playerList.remove(player);
+            otherTeam.balance += player.worth;
+            s = player + " is successfully transferred from " + otherTeam + "\n" +
+                    "Balance - " + player.worth + " current Balance: " + balance;
+        }
+        s = "You don't have enough money to buy this player";
+        return s;
     }
 
     public String getName(){
@@ -134,7 +158,8 @@ public class Team {
                 "\nNumber of Players In The Team: " + numberOfPlayers +
                 "\nStadium: " + stadium +
                 "\nCoach: " + coach.getName() +
-                "\nCurrent Balance: " + balance;
+                "\nCurrent Balance: " + balance +
+                "\nTeam Worth: " + teamWorth();
         return s;
     }
 }

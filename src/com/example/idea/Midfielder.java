@@ -1,8 +1,8 @@
 package com.example.idea;
 
 public class Midfielder extends Player{
-    public Midfielder(String name,Positions position, int number, int age){
-        super(name,position, number, age);
+    public Midfielder(String name,Positions position, int number, int age, double worth){
+        super(name,position, number, age, worth);
         setPassingRating(50);
         setShootingRating(40);
         setGoalKeepingRating(0);
@@ -15,7 +15,8 @@ public class Midfielder extends Player{
                 "\nPosition: " + position +
                 "\nPassing Rating: " + getPassingRating() +
                 "\nShooting Rating: " + getShootingRating() +
-                "\nDefending Rating: " + getDefendingRating();
+                "\nDefending Rating: " + getDefendingRating() +
+                "\nWorth: " + worth;
         return s;
     }
 }

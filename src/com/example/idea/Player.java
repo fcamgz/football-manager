@@ -4,12 +4,14 @@ public class Player {
    protected String name;
    protected Positions position;
    protected int number,age,shootingRating,passingRating,defendingRating,goalKeepingRating,trainCount;
+    protected double worth;
 
-    public Player(String name, Positions position, int number, int age) {
+    public Player(String name, Positions position, int number, int age, double worth) {
         this.name = name;
         this.position = position;
         this.number = number;
         this.age = age;
+        this.worth = worth;
         shootingRating = 0;
         passingRating = 0;
         defendingRating = 0;
@@ -85,7 +87,8 @@ public class Player {
         String s = "\nPlayer: " + name +
                 "\nNumber: " + number +
                 "\nAge: " + age +
-                "\nPosition: " + position;
+                "\nPosition: " + position +
+                "\nWorth: " + worth;
         return s;
     }
 

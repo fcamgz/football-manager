@@ -1,8 +1,8 @@
 package com.example.idea;
 
 public class Defender extends Player {
-    public Defender(String name,Positions position, int number, int age){
-        super(name,position, number, age);
+    public Defender(String name,Positions position, int number, int age, double worth){
+        super(name,position, number, age, worth);
         setDefendingRating(50);
         setGoalKeepingRating(0);
         setPassingRating(30);
@@ -15,7 +15,8 @@ public class Defender extends Player {
                 "\nPosition: " + position +
                 "\nDefending Rating: " + getDefendingRating() +
                 "\nPassing Rating: " + getPassingRating() +
-                "\nShooting Rating: " + getShootingRating();
+                "\nShooting Rating: " + getShootingRating() +
+                "\nWorth: " + worth;
         return s;
     }
 }

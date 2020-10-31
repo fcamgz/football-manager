@@ -7,11 +7,11 @@ public class Main {
         Team besiktas = new Team("Besiktas","vodafone arena",1903,20,100000);
         Team madrid = new Team("Real Madrid","santiago bernabeu",1901,20,1000000);
         Coach senol = new Coach("Senol Gunes",20,besiktas);
-        Player aboubakar = new Forward("Aboubakar",Positions.FORWARD,10,27);
-        Player talisca = new Midfielder("Talisca",Positions.MIDFIELDER,31,26);
-        Player vanDjik = new Defender("Van Djik",Positions.DEFENDER,4,27);
-        Player fabri = new GoalKeeper("Fabri",Positions.GOALKEEPER,1,30);
-        Player ronaldo = new Player("ronaldo",Positions.FORWARD,7,33);
+        Player aboubakar = new Forward("Aboubakar",Positions.FORWARD,10,27,20000);
+        Player talisca = new Midfielder("Talisca",Positions.MIDFIELDER,31,26,10000);
+        Player vanDjik = new Defender("Van Djik",Positions.DEFENDER,4,27,15000);
+        Player fabri = new GoalKeeper("Fabri",Positions.GOALKEEPER,1,30,5000);
+        Player ronaldo = new Player("ronaldo",Positions.FORWARD,7,33,200000);
         madrid.addPlayer(ronaldo);
         Coach zidane = new Coach("zidane",20,madrid);
         madrid.addCoach(zidane);
