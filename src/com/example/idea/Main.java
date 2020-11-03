@@ -11,7 +11,7 @@ public class Main {
         Player talisca = new Midfielder("Talisca",Positions.MIDFIELDER,31,26,10000);
         Player vanDjik = new Defender("Van Djik",Positions.DEFENDER,4,27,15000);
         Player fabri = new GoalKeeper("Fabri",Positions.GOALKEEPER,1,30,5000);
-        Player ronaldo = new Player("ronaldo",Positions.FORWARD,7,33,200000);
+        Player ronaldo = new Forward("ronaldo",Positions.FORWARD,7,33,200000);
         madrid.addPlayer(ronaldo);
         Coach zidane = new Coach("zidane",20,madrid);
         madrid.addCoach(zidane);

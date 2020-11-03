@@ -1,6 +1,6 @@
 package com.example.idea;
 
-public class Player {
+public abstract class Player {
    protected String name;
    protected Positions position;
    protected int number,age,shootingRating,passingRating,defendingRating,goalKeepingRating,trainCount;
